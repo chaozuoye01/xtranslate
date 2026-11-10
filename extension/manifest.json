@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "X 评论聊天翻译",
+  "version": "1.0.0",
+  "description": "消除语言的隔阂。在 X 评论框（及可选开启的聊天输入框）写中文，一键译成英文并填回，附中英对照。使用你自己的 Grok 账号授权。非 X / xAI 官方产品。",
+  "homepage_url": "https://zuoye.si/",
+  "minimum_chrome_version": "120",
+  "permissions": ["storage", "alarms"],
+  "host_permissions": ["https://x.com/*", "https://twitter.com/*", "https://auth.x.ai/*", "https://api.x.ai/*"],
+  "background": {"service_worker": "background.js"},
+  "action": {"default_title": "X 评论聊天翻译", "default_popup": "popup.html", "default_icon": {"16": "assets/icon-16.png", "32": "assets/icon-32.png"}},
+  "icons": {"16": "assets/icon-16.png", "32": "assets/icon-32.png", "48": "assets/icon-48.png", "128": "assets/icon-128.png"},
+  "options_page": "options.html",
+  "content_scripts": [{"matches": ["https://x.com/*", "https://twitter.com/*"], "js": ["core.js", "editor-adapter.js", "content.js"], "run_at": "document_idle"}],
+  "web_accessible_resources": [{"resources": ["panel.css"], "matches": ["https://x.com/*", "https://twitter.com/*"]}]
+}

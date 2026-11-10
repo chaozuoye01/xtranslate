@@ -1,0 +1,21 @@
+const test = require('node:test');
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
+const { execFileSync } = require('node:child_process');
+const { unzipSync } = require('fflate');
+test('installation archive loads its manifest at the root and contains only distributable resources', () => {
+  const root = path.resolve(__dirname, '..');
+  execFileSync(process.execPath, ['tools/package.cjs'], { cwd: root });
+  const version = require('../extension/manifest.json').version;
+  const files = unzipSync(fs.readFileSync(path.join(root, `dist/grok-input-translator-${version}.zip`)));
+  const manifest = JSON.parse(Buffer.from(files['manifest.json']).toString('utf8'));
+  assert.equal(manifest.manifest_version, 3);
+  assert.equal(manifest.version, require('../package.json').version);
+  const referenced = [manifest.background.service_worker, manifest.options_page, manifest.action.default_popup, ...Object.values(manifest.icons), ...manifest.content_scripts.flatMap(c => c.js), ...manifest.web_accessible_resources.flatMap(c => c.resources)];
+  for (const file of referenced) assert.ok(files[file], `Missing packaged asset: ${file}`);
+  assert.ok(files['vendor/LICENSE-SuperX.txt']);
+  assert.ok(files['PRIVACY.md']);
+  assert.equal(Object.keys(files).some(n => /node_modules|\.superpowers|test|demo|\.git|\.env/i.test(n)), false);
+  assert.deepEqual(manifest.permissions, ['storage', 'alarms']);
+});
