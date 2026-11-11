@@ -4,7 +4,7 @@
 
 在 X（Twitter）的评论框和私信里写中文，点一下「译成英文」，英文自动填回原输入框，下面附中英对照，核对后由你自己发布。用你自己的 Grok 账号授权，不用填 API Key。
 
-**Chrome 应用商店：审核中** · 插件主页：<https://zuoye.si/xtranslate/> · 作者：作业借你抄 [@chaozuoye](https://x.com/chaozuoye) · 网站：[zuoye.si](https://zuoye.si/)
+**[Chrome 应用商店安装](https://chromewebstore.google.com/detail/x-%E8%AF%84%E8%AE%BA%E8%81%8A%E5%A4%A9%E7%BF%BB%E8%AF%91/anhdnnldckkhkbkhanfjdmglnhdhhidj)** · 插件主页：<https://zuoye.si/xtranslate/> · 作者：作业借你抄 [@chaozuoye](https://x.com/chaozuoye) · 网站：[zuoye.si](https://zuoye.si/)
 
 ![在 X 评论框写中文，一键译成英文，附中英对照](store/images/screenshot-1-reply.png)
 
@@ -43,7 +43,9 @@
 
 ## 安装
 
-**Chrome 应用商店**：审核中，通过后这里会放安装链接。
+**Chrome 应用商店**（推荐，以后自动更新）：<https://chromewebstore.google.com/detail/x-%E8%AF%84%E8%AE%BA%E8%81%8A%E5%A4%A9%E7%BF%BB%E8%AF%91/anhdnnldckkhkbkhanfjdmglnhdhhidj>
+
+> 开启了 Chrome「增强型保护」时，安装可能提示「增强型安全浏览功能不信任此扩展程序」。这是 Chrome 对新开发者账号的常规提示，不代表插件有风险，点「继续安装」即可。
 
 **从源码安装**（Chrome 120 或更高版本，Edge 等 Chromium 内核浏览器同样可以）：
 
